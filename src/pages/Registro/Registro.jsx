@@ -49,7 +49,7 @@ export default function Registro() {
            spacing={2}
           >
            <TextField
-            error={errors.email == 'Invalid email address' ? true : false}
+            error={errors.email === 'Invalid email address' ? true : false}
             type="email"
             name="email"
             onChange={handleChange}
@@ -66,7 +66,16 @@ export default function Registro() {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.password}
-            label="Ingresa tu contrasena deseada"
+            label="Ingresa tu contrasena"
+           />
+           {errors.password && touched.password && errors.password}
+           <TextField
+            type="password"
+            name="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+            label="Valida tu contrasena"
            />
            {errors.password && touched.password && errors.password}
 
