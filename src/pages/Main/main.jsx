@@ -23,7 +23,7 @@ export default function Main() {
 
     const styles = {
         buttons: {
-
+zIndex: "50",
         },
         titulos: {
 
@@ -38,15 +38,7 @@ export default function Main() {
     return (
         <>
             <Grid container sx={{ width: "100%", height: "100%" }}>
-            <video autoPlay loop muted 
-            style={{
-                position: "absolute",
-                width: "100%",
-                
-            }}
-            >
-                    <source src={Shutterstock} type="video/mp4" />
-                </video>
+            
                 <Box sx={styles.titulos}> Espacio para logos</Box>
                 
                 <Grid item xs={12} sm={12} md={12} lg={12} >
@@ -56,7 +48,15 @@ export default function Main() {
                         alignItems="center"
                         spacing={2}
                     >
-                        <Box sx={styles.titulos}> Selecciona tu metodo de conexion</Box>
+                        <Box sx={styles.titulos}> Selecciona tu metodo de conexion </Box>
+                        <video autoPlay loop muted 
+            style={{
+                position: "absolute",
+                width: "100%",
+            }}
+            >
+                <source src={Shutterstock} type="video/mp4" />
+                </video>
                         <Button onClick={() => { handleChangeInputs(1) }} variant="contained" sx={styles.buttons}> Correo Electronico </Button>
                         {mostrarInputEmail ? <><TextField sx={styles.textFields} label="Ingresa tu email" variant="outlined"></TextField></>
                             : <></>}
