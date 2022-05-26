@@ -13,8 +13,8 @@ import Registro from '../Registro/Registro';
 import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-import Login from '../Login/Login';
-import Register from '../Register/Register';
+import Login from '../../components/Login/Login';
+import Register from '../../components/Register/Register';
 import Reset from '../Reset/Reset';
 import Dashboard from '../Dashboard/Dashboard';
 
@@ -26,9 +26,9 @@ function MutableContent() {
                 <Routes >
                     <Route
                         path="*"
-                        element={<Navigate to="/main" replace />}
+                        element={<Navigate to="/" replace />}
                     />
-                    <Route path='/main' element={<Main />} />
+                    <Route path='/' element={<Main />} />
                     <Route path='/wheel' element={<WheelScreen />} />
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/login" element={<Login />} />

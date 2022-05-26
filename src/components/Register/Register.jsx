@@ -6,7 +6,12 @@ import {
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "../../utils/firebaseApp";
-import "./Register.css";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+
+
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,43 +27,46 @@ function Register() {
     // if (user) history.replace("/dashboard");
   }, [user, loading]);
   return (
-    <div className="register">
-      <div className="register__container">
-        <input
+    <Box className="">
+      <Stack
+          direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing={2}
+            className="register__container">
+        <TextField
           type="text"
           className="register__textBox"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Full Name"
         />
-        <input
+        <TextField
           type="text"
           className="register__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <input
+        <TextField
           type="password"
           className="register__textBox"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button className="register__btn" onClick={register}>
+        <Button variant="contained" className="register__btn" onClick={register}>
           Register
-        </button>
-        <button
+        </Button>
+        <Button variant="contained"
           className="register__btn register__google"
           onClick={signInWithGoogle}
         >
           Register with Google
-        </button>
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
-        </div>
-      </div>
-    </div>
+        </Button>
+    
+      </Stack>
+    </Box>
   );
 }
 export default Register;

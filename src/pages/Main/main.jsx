@@ -1,16 +1,20 @@
 import { Button, TextField } from "@mui/material"
-import { Grid, Box, Stack } from "@mui/material"
+import { Grid, Box, Stack, Paper } from "@mui/material"
 import * as React from "react"
 import { Link } from "react-router-dom"
 import Shutterstock from "../../video/shutterstock.mp4";
+import Login from "../../components/Login/Login"
+import Register from "../../components/Register/Register"
+import Dashboard from "../Dashboard/Dashboard";
 
 export default function Main() {
 
     const [mostrarInputEmail, setMostrarInputEmail] = React.useState(false)
     const [mostrarInputTelefono, setMostrarInputTelefono] = React.useState(false)
 
+    const [mostrarRegistro, setMostrarRegistro] = React.useState(false)
+    const [userIsLogged, setUserIsLogged] = React.useState(false)
     const handleChangeInputs = (value) => {
-
         if (value == 1) {
             setMostrarInputEmail(true)
             setMostrarInputTelefono(false)
@@ -23,7 +27,7 @@ export default function Main() {
 
     const styles = {
         buttons: {
-zIndex: "50",
+            zIndex: "50",
         },
         titulos: {
 
@@ -37,39 +41,69 @@ zIndex: "50",
 
     return (
         <>
-            <Grid container sx={{ width: "100%", height: "100%" }}>
-            
-                <Box sx={styles.titulos}> Espacio para logos</Box>
-                
-                <Grid item xs={12} sm={12} md={12} lg={12} >
-                    <Stack sx={{ height: "100%" }}
-                        direction="column"
-                        justifyContent="center"
-                        alignItems="center"
-                        spacing={2}
-                    >
-                        <Box sx={styles.titulos}> Selecciona tu metodo de conexion </Box>
-                        <video autoPlay loop muted 
-            style={{
-                position: "absolute",
-                width: "100%",
-            }}
-            >
-                <source src={Shutterstock} type="video/mp4" />
-                </video>
-                        <Button onClick={() => { handleChangeInputs(1) }} variant="contained" sx={styles.buttons}> Correo Electronico </Button>
-                        {mostrarInputEmail ? <><TextField sx={styles.textFields} label="Ingresa tu email" variant="outlined"></TextField></>
-                            : <></>}
-                        <Button onClick={() => { handleChangeInputs(2) }} variant="contained" sx={styles.buttons}> Numero de telefono </Button>
-                        {mostrarInputTelefono ? <><TextField sx={styles.textFields} label="Ingresa tu telefono" variant="outlined"></TextField></>
-                            : <></>}
+            <Grid container sx={{ height: "100%" }}>
+                <Grid item lg={2} sx={{ padding: "20vh 0 0 0", backgroundColor: "#bdc3c7" }}>
+                    <Box sx={{}}>
+                        {mostrarRegistro ?
+                            <>
+                                <Register />
+                                <Stack
+                                    direction="column"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    spacing={2}>
+                                    <Box>Ya tienes cuenta? </Box>
+                                    <Button onClick={() => { setMostrarRegistro(false) }}>Conexion</Button>
+                                </Stack>
+                            </>
+                            :
+                            <>
+                                {userIsLogged ? <>
 
-                        <Box sx={styles.buttons}>
-                            <Box>¿No tienes cuenta?</Box>
-                            <Link to="/registro">Registrarte</Link>
-                        </Box>
-                    </Stack>
+                                    <Dashboard isLogged={userIsLogged} changeLogged={setUserIsLogged} /></> :
+                                    <>
+                                        <Login isLogged={userIsLogged} changeLogged={setUserIsLogged} />
+                                        <Stack
+                                            direction="column"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            spacing={2}>
+                                            <Link to="/reset">Olvide mi contrasena</Link>
+                                            <Box>No tienes cuenta? </Box>
+                                            <Button onClick={() => { setMostrarRegistro(true) }}>registrate</Button>
+                                        </Stack>
+                                    </>
+                                }
+
+                            </>}
+
+                    </Box>
                 </Grid>
+                <Grid item lg={10} sx={{ width: "100%", backgroundColor: "#2c3e50", padding: "3%" }}>
+                    <Stack direction="column" spacing={2} >
+                        <Stack
+                            direction="row"
+                            spacing={2}
+                            justifyContent="center"
+                            alignItems="center">
+                            <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "red" }}>
+                                <Link sx={{ width: "100%", height: "100%" }} to="/wheel">Hazme click</Link>
+                            </Paper>
+                            <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "green" }}> Segundo juego</Paper>
+                            <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "gray" }}> Tercer juego</Paper>
+                        </Stack>
+                        <Stack
+                            direction="row"
+                            justifyContent="center"
+                            alignItems="center"
+                            spacing={2}>
+
+                            <Box>Tabla de Premios</Box>
+                        </Stack>
+                    </Stack>
+
+                </Grid>
+
             </Grid>
         </>
     )
