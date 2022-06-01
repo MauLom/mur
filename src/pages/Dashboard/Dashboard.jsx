@@ -3,9 +3,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../utils/firebaseApp";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import LoopIcon from '@mui/icons-material/Loop';
 
-import { Box, Modal, Button, TextField, Typography, Stack } from "@mui/material"
+import LoopIcon from '@mui/icons-material/Loop';
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+
+import { Box, Modal, Paper, Button, TextField, Typography, Stack } from "@mui/material"
 
 
 const Dashboard = ({ isLogged, changeLogged }) => {
@@ -52,12 +55,20 @@ const Dashboard = ({ isLogged, changeLogged }) => {
   };
 
   return (
-    <div className="dashboard">
-      <div className="dashboard__container">
+    <Box >
+      <Stack direction="row" justifyContent="space-around" sx={{backgroundColor:"white", borderRadius:"20px", margin:"15px 3px 15px 3px"}}>
+        <Box sx={{margin:"5px 5px 5px 5px"}}>
+          <CreditScoreIcon />
+        </Box>
+        <Box sx={{ margin:"5px 0 5px 0", color:"green" }}>5000$</Box>
+        <Button onClick={() => { handleOpenModal() }}> <AddBoxIcon /> </Button>
+      </Stack>
+
+
+      <div >
         Logged in as
         <div>{name}</div>
         <div>{user?.email}</div>
-        <Button onClick={() => { handleOpenModal() }}> Depositar </Button>
 
         <Modal
           open={openModal}
@@ -81,11 +92,11 @@ const Dashboard = ({ isLogged, changeLogged }) => {
           </Box>
         </Modal>
 
-        <button className="dashboard__btn" onClick={() => { getOutOfhere() }}>
+        <Button onClick={() => { getOutOfhere() }}>
           Logout
-        </button>
+        </Button>
       </div>
-    </div>
+    </Box>
   );
 }
 export default Dashboard;

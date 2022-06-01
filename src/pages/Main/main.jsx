@@ -42,7 +42,7 @@ export default function Main() {
     return (
         <>
             <Grid container sx={{ height: "100%", width:"100%" }}>
-                <Grid item lg={2} md={12} sm={10} xs={10} sx={{ padding: "20vh 0 0 0", backgroundColor: "#bdc3c7" }}>
+                <Grid item lg={2} md={12} sm={10} xs={10} sx={{ padding: "0 0 0 0", backgroundColor: "#bdc3c7" }}>
                     <Box sx={{}}>
                         {mostrarRegistro ?
                             <>
