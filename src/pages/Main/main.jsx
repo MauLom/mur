@@ -41,8 +41,8 @@ export default function Main() {
 
     return (
         <>
-            <Grid container sx={{ height: "100%" }}>
-                <Grid item lg={2} sx={{ padding: "20vh 0 0 0", backgroundColor: "#bdc3c7" }}>
+            <Grid container sx={{ height: "100%", width:"100%" }}>
+                <Grid item lg={2} md={12} sm={10} xs={10} sx={{ padding: "20vh 0 0 0", backgroundColor: "#bdc3c7" }}>
                     <Box sx={{}}>
                         {mostrarRegistro ?
                             <>
@@ -79,7 +79,7 @@ export default function Main() {
 
                     </Box>
                 </Grid>
-                <Grid item lg={10} sx={{ width: "100%", backgroundColor: "#2c3e50", padding: "3%" }}>
+                <Grid item lg={10} md={12} sm={10} xs={10} sx={{ width: "100%", backgroundColor: "#2c3e50", padding: "3%" }}>
                     <Stack direction="column" spacing={2} >
                         <Stack
                             direction="row"
