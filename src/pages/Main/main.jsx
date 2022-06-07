@@ -7,6 +7,9 @@ import Login from "../../components/Login/Login"
 import Register from "../../components/Register/Register"
 import Dashboard from "../Dashboard/Dashboard";
 
+///Assets
+import IMGGameBomgs from "../../assets/gameBombs.jpeg"
+
 export default function Main() {
 
     const [mostrarInputEmail, setMostrarInputEmail] = React.useState(false)
@@ -29,11 +32,9 @@ export default function Main() {
         buttons: {
             zIndex: "50",
         },
-        titulos: {
-
-        },
-        textFields: {
-
+        usersMenu: {
+          adding: "0 0 0 0",
+          backgroundColor: "#bdc3c7"
         }
 
     }
@@ -42,7 +43,7 @@ export default function Main() {
     return (
         <>
             <Grid container sx={{ height: "100%", width:"100%" }}>
-                <Grid item lg={2} md={12} sm={10} xs={10} sx={{ padding: "0 0 0 0", backgroundColor: "#bdc3c7" }}>
+                <Grid item lg={2} md={12} sm={10} xs={10} sx={styles.usersMenu}>
                     <Box sx={{}}>
                         {mostrarRegistro ?
                             <>
@@ -63,7 +64,7 @@ export default function Main() {
                                     <Dashboard isLogged={userIsLogged} changeLogged={setUserIsLogged} /></> :
                                     <>
                                         <Login isLogged={userIsLogged} changeLogged={setUserIsLogged} />
-                                        <Stack
+                                        {/* <Stack
                                             direction="column"
                                             justifyContent="center"
                                             alignItems="center"
@@ -71,7 +72,7 @@ export default function Main() {
                                             <Link to="/reset">Olvide mi contrasena</Link>
                                             <Box>No tienes cuenta? </Box>
                                             <Button onClick={() => { setMostrarRegistro(true) }}>registrate</Button>
-                                        </Stack>
+                                        </Stack> */}
                                     </>
                                 }
 
@@ -89,7 +90,10 @@ export default function Main() {
                             <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "red" }}>
                                 <Link sx={{ width: "100%", height: "100%" }} to="/wheel">Hazme click</Link>
                             </Paper>
-                            <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "green" }}> Segundo juego</Paper>
+                            <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "green" }}>
+
+                            <Box><img width="100%" height="100%" src={IMGGameBomgs} /></Box>
+                            </Paper>
                             <Paper sx={{ width: "50%", height: "30vh", backgroundColor: "gray" }}> Tercer juego</Paper>
                         </Stack>
                         <Stack

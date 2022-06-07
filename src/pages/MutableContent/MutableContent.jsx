@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import WheelScreen from '../../components/wheelScreen';
 import Main from '../Main/main';
+import Home from '../Home/home';
+
 import Registro from '../Registro/Registro';
 import firebase from 'firebase/compat/app';
 import * as firebaseui from 'firebaseui'
@@ -28,7 +30,7 @@ function MutableContent() {
                         path="*"
                         element={<Navigate to="/" replace />}
                     />
-                    <Route path='/' element={<Main />} />
+                    <Route path='/' element={<Home />} />
                     <Route path='/wheel' element={<WheelScreen />} />
                     <Route path="/registro" element={<Registro />} />
                     <Route path="/login" element={<Login />} />

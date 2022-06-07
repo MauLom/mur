@@ -20,10 +20,10 @@ const Login = ({ isLogged, changeLogged }) => {
     if (user) changeLogged(true);
   }, [user, loading]);
   return (
-    <Box className="">
+    <Box >
 
       <>
-        <Stack direction="column"
+        {/* <Stack direction="column"
           justifyContent="center"
           alignItems="center"
           spacing={2} >
@@ -50,7 +50,7 @@ const Login = ({ isLogged, changeLogged }) => {
           <Button variant="contained" onClick={signInWithGoogle}>
             Login with Google
           </Button>
-        </Stack>
+        </Stack> */}
       </>
 
     </Box>
